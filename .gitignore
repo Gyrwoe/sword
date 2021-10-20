@@ -5,6 +5,11 @@
 [Bb]uilds/
 [Ll]ogs/
 Assets/AssetStoreTools*
+UserSettings*
+UserSettings/
+ProjectSettings*
+ProjectSettings/
+Assets/3DForge*
 
 # Visual Studio cache directory
 .vs/
