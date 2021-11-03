@@ -14,10 +14,18 @@ public class MeshDeformerInput : MonoBehaviour {
 	void OnCollisionEnter(Collision collision)
     {
 		Vector3 collisionPoint = transform.position;
+		bool audioPlayed = false;
 
         foreach (ContactPoint contact in collision.contacts)
         {
             MeshDeformer deformer = contact.otherCollider.GetComponent<MeshDeformer>();
+			AudioSource audio = contact.otherCollider.GetComponent<AudioSource>();
+			ParticleSystem particle = contact.otherCollider.GetComponent<ParticleSystem>();
+			if (!audioPlayed) {
+				audio.Play();
+				particle.Play();
+				audioPlayed = true;
+			}
 			if (deformer) {
 				Vector3 point = contact.point;
 				collisionPoint = contact.point;
@@ -25,18 +33,16 @@ public class MeshDeformerInput : MonoBehaviour {
 				deformer.AddDeformingForce(point, force);
 			}
         }
-		GameObject part = GameObject.Find("Paille");
+		/*GameObject part = GameObject.Find("Paille");
 		part.transform.position = collisionPoint;
 		ParticleSystem particles = part.GetComponent<ParticleSystem>();
 			if (particles != null) {
-				print("Moins de problèmes  : " + particles.isEmitting);
-				
 				if (!particles.isEmitting) {
 					particles.Play();
 				}
 			}else {
 				print("Prolème");
-			}
+			}*/
     }
 
 	/*private void OnTriggerEnter(Collider other) {
