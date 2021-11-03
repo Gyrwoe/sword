@@ -99,6 +99,11 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   manager: {fileID: 0}
+  targets: []
+  targetPositions:
+  - {x: -0.05, y: 5.99, z: 0.94}
+  - {x: -0.05, y: 3.64, z: 0.94}
+  targetPrefab: {fileID: 2532679963504981241, guid: cf50433283a1beb44a924adf009b23be, type: 3}
 --- !u!54 &-2553428470026785702
 Rigidbody:
   m_ObjectHideFlags: 0

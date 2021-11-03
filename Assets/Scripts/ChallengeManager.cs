@@ -19,6 +19,11 @@ public class ChallengeManager : MonoBehaviour
     public DummySpawner spawner;
 
     public bool gameRunning = false;
+
+    /**
+     * The number of targets placed on a new dummy.
+     */
+    public int defaultTargetCount = 2;
     
     // Start is called before the first frame update
     void Start()
