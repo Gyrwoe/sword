@@ -14,10 +14,6 @@ public class MeshDeformer : MonoBehaviour {
 
 	void Start () {
 		deformingMesh = GetComponent<MeshFilter>().mesh;
-		if (!deformingMesh.isReadable) {
-			print("OK");
-		}
-		print(deformingMesh.isReadable);
 		originalVertices = deformingMesh.vertices;
 		displacedVertices = new Vector3[originalVertices.Length];
 		for (int i = 0; i < originalVertices.Length; i++) {
