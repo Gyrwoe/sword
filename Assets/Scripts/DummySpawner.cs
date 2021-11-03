@@ -5,15 +5,22 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 /**
- * Dynamically spawns dummies around the player.
+ * Dynamically spawns dummies.
+ * Dummies are spawned inside of a circle around the center of the playing area. They cannot spawn close to each other
+ * or to the player, or outside of the radius of the playing area.
  */
 public class DummySpawner : MonoBehaviour
 {
-	/**
-	 * The list of positions for currently active dummies.
-	 */
-	public List<Transform> dummies = new List<Transform>();
+	// /**
+	//  * The list of positions for currently active dummies.
+	//  */
+	// public List<Transform> dummies = new List<Transform>();
 
+	/**
+	 * The list of currently active dummies.
+	 */
+	public List<Dummy> dummies = new List<Dummy>();
+	
 	/**
 	* The maximum number of dummies before the game stops spawning more.
 	*/
@@ -68,6 +75,11 @@ public class DummySpawner : MonoBehaviour
 	 */
 	public int maxSpawnAttempts = 50;
 
+	/**
+	 * Whether the spawner is actively running or not.
+	 */
+	public bool running = false;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -77,7 +89,10 @@ public class DummySpawner : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		TrySpawn();
+		if (running)
+		{
+			TrySpawn();
+		}
 	}
 
 	/**
@@ -136,9 +151,9 @@ public class DummySpawner : MonoBehaviour
 		if (Vector3.Distance(proposedPosition, playerPosition) < playerRadius) return GenerateDummyPosition(--remainingTries);
 		
 		// Retry if it is too close to any given dummy
-		foreach (var dummyTransform in dummies)
+		foreach (var dummy in dummies)
 		{
-			Vector3 dummyPosition = dummyTransform.position;
+			Vector3 dummyPosition = dummy.gameObject.GetComponent<Transform>().position;
 			dummyPosition.y = 0;
 			if (Vector3.Distance(proposedPosition, dummyPosition) < dummyRadius) return GenerateDummyPosition(--remainingTries);
 		}
@@ -157,13 +172,30 @@ public class DummySpawner : MonoBehaviour
 		Vector3 toPlayer = playerTransform.position - position;
 		toPlayer.y = 0;
 		
-		GameObject dummy = Instantiate(dummyPrefab, position, Quaternion.LookRotation(toPlayer));
+		Dummy dummy = Instantiate(dummyPrefab, position, Quaternion.LookRotation(toPlayer)).GetComponent<Dummy>();
 		
-		dummies.Add(dummy.GetComponent<Transform>());
+		dummies.Add(dummy);
 	}
 
-	public void RemoveDummy(int index)
+	/**
+	 * Deletes the given dummy
+	 */
+	public void RemoveDummy(Dummy dummy)
 	{
-		dummies.RemoveAt(index);
+		Destroy(dummy.gameObject);
+		dummies.Remove(dummy);
+	}
+
+	/**
+	 * Deletes all dummies.
+	 */
+	public void RemoveAllDummies()
+	{
+		while (dummies.Count > 0)
+		{
+			Dummy dummy = dummies[0];
+			Destroy(dummy.gameObject);
+			dummies.Remove(dummy);
+		}
 	}
 }
