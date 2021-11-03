@@ -5,13 +5,14 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class HideRay : MonoBehaviour
 {
-    public XRController rightTeleportRay;
+    public XRController rightTPController;
+    private XRInteractorLineVisual rightTeleportRay;
     public InputHelpers.Button teleportActivationButton;
     public float activationThreshold = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rightTeleportRay = rightTPController.GetComponent(typeof(XRInteractorLineVisual)) as XRInteractorLineVisual;
     }
 
     // Update is called once per frame
@@ -19,13 +20,13 @@ public class HideRay : MonoBehaviour
     {
         if (rightTeleportRay)
         {
-            rightTeleportRay.gameObject.SetActive(CheckIfActivated(rightTeleportRay));
+            rightTeleportRay.enabled = CheckIfActivated(rightTPController);
         }
     }
 
-    public bool CheckIfActivated(XRController controller)
+    public bool CheckIfActivated(XRController ray)
     {
-        InputHelpers.IsPressed(controller.inputDevice, teleportActivationButton, out bool isActivated, activationThreshold);
+        InputHelpers.IsPressed(ray.inputDevice, teleportActivationButton, out bool isActivated, activationThreshold);
         return isActivated;
     }
 }
