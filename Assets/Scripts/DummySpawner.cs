@@ -132,6 +132,7 @@ public class DummySpawner : MonoBehaviour
 	 */
 	public Vector3 GenerateDummyPosition(int remainingTries)
 	{
+		// If the algorithm cannot find a viable position fast enough, stop calculations
 		if (remainingTries == 0)
 		{
 			Debug.Log("Failed spawn");
@@ -143,13 +144,22 @@ public class DummySpawner : MonoBehaviour
 		playerPosition.y = 0; // We only work in the xz plane for simplicity
 		
 		// Generate coordinates inside the playable area
-		float x = Random.Range(playableAreaCenterPosition.x - playableAreaRadius, playableAreaCenterPosition.x + playableAreaRadius);
-		float z = Random.Range(playableAreaCenterPosition.z - playableAreaRadius, playableAreaCenterPosition.z + playableAreaRadius);
+		// The playable area is considered circular so the coordinates must respect this constraint
+		// After generating x, an imaginary circle of random radius is used to apply the equation of the circle and find y
+		float radius = Random.Range(0.0f, playableAreaRadius);
+		float x = Random.Range(playableAreaCenterPosition.x - radius, playableAreaCenterPosition.x + radius);
+		float z = (float)(Math.Sqrt(Math.Pow(radius, 2) - Math.Pow(x - playableAreaCenterPosition.x, 2)) + playableAreaCenterPosition.z);
+		// A symmetry is applied to avoid having points from only half of the circle
+		z = Random.value < .5 ? z : z - (2 * (z - playableAreaCenterPosition.z));
 		Vector3 proposedPosition = new Vector3(x, 0, z);
 		
-		// Retry if it is too close to the player
-		if (Vector3.Distance(proposedPosition, playerPosition) < playerRadius) return GenerateDummyPosition(--remainingTries);
+		// Retry if it is in the FOV of the player and generate new coordinates
+		// But the algorithm is struggling to find a viable position, accept this position
+		if (IsInCameraView(proposedPosition) && remainingTries > maxSpawnAttempts/4) return GenerateDummyPosition(--remainingTries);
 		
+		// Retry if it is too close to the player and generate new coordinates
+		if (Vector3.Distance(proposedPosition, playerPosition) < playerRadius) return GenerateDummyPosition(--remainingTries);
+
 		// Retry if it is too close to any given dummy
 		foreach (var dummy in dummies)
 		{
@@ -159,6 +169,16 @@ public class DummySpawner : MonoBehaviour
 		}
 
 		return proposedPosition;
+	}
+
+	/**
+	 * Returns true if placing a dummy at the provided position would make it visible by the camera.
+	 */
+	public bool IsInCameraView(Vector3 position)
+	{
+		Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+		Bounds bounds = new Bounds(position, new Vector3(dummyRadius*2, dummyRadius*2, dummyRadius*2));
+		return GeometryUtility.TestPlanesAABB(planes, bounds);
 	}
 
 	/**
