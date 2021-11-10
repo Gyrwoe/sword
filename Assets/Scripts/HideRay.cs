@@ -5,8 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class HideRay : MonoBehaviour
 {
-    public XRController rightTPController;
-    public XRController leftTPController;
+    public ActionBasedController rightTPController;
+    public ActionBasedController leftTPController;
     private XRInteractorLineVisual rightTeleportRay;
     private XRInteractorLineVisual leftTeleportRay;
     public InputHelpers.Button teleportActivationButton;
@@ -31,9 +31,8 @@ public class HideRay : MonoBehaviour
         }
     }
 
-    public bool CheckIfActivated(XRController ray)
+    public bool CheckIfActivated(XRBaseController ray)
     {
-        InputHelpers.IsPressed(ray.inputDevice, teleportActivationButton, out bool isActivated, activationThreshold);
-        return isActivated;
+        return ray.activateInteractionState.active;
     }
 }

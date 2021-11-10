@@ -4,6 +4,7 @@ public class MeshDeformerInput : MonoBehaviour {
 	
 	public float force = 10f;
 	public float forceOffset = 0.1f;
+	private  static int hitNumber = 0;
 	
 	/*void Update () {
 		if (Input.GetMouseButton(0)) {
@@ -14,23 +15,32 @@ public class MeshDeformerInput : MonoBehaviour {
 	void OnCollisionEnter(Collision collision)
     {
 		Vector3 collisionPoint = transform.position;
-		bool audioPlayed = false;
+		bool touched = false;
 
         foreach (ContactPoint contact in collision.contacts)
         {
             MeshDeformer deformer = contact.otherCollider.GetComponent<MeshDeformer>();
 			AudioSource audio = contact.otherCollider.GetComponent<AudioSource>();
 			ParticleSystem particle = contact.otherCollider.GetComponent<ParticleSystem>();
-			if (!audioPlayed) {
-				audio.Play();
-				particle.Play();
-				audioPlayed = true;
-			}
 			if (deformer) {
 				Vector3 point = contact.point;
 				collisionPoint = contact.point;
 				point += contact.normal * forceOffset;
 				deformer.AddDeformingForce(point, force);
+			}
+			if (!touched && audio && particle) {
+				if (hitNumber==4) {
+					FindObjectOfType<AudioManager>().Play("explosion");
+					hitNumber=0;
+				}
+				if (collisionPoint.y < 2.5) {
+					audio.Play();
+				} else {
+					FindObjectOfType<AudioManager>().Play("truck");
+				}
+				particle.Play();
+				touched = true;
+				hitNumber++;
 			}
         }
 		/*GameObject part = GameObject.Find("Paille");
