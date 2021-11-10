@@ -7,9 +7,15 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class TeleportManager : MonoBehaviour
 {
     [SerializeField] private InputActionAsset actionAsset;
+    [SerializeField] private XRRayInteractor rayInteractor;
+    [SerializeField] private TeleportationProvider provider;
     private InputAction _thumbstick;
+    private bool _isActive;
+
     void Start()
     {
+        rayInteractor.enabled = false;
+
         var activate = actionAsset.FindActionMap("XRI RightHand").FindAction("Teleportation Mode Activate");
         activate.Enable();
         activate.performed += OnTeleportActivate;
@@ -24,16 +30,38 @@ public class TeleportManager : MonoBehaviour
 
     void Update()
     {
-        
+        if (!_isActive)
+            return;
+
+        if (_thumbstick.triggered)
+            return;
+
+        if (!rayInteractor.GetCurrentRaycastHit(out RaycastHit hit))
+        {
+            rayInteractor.enabled = false;
+            _isActive = false;
+            return;
+        }
+
+        TeleportRequest request = new TeleportRequest()
+        {
+            destinationPosition = hit.point,
+           //TODO destinationRotation = actionAsset.FindActionMap("XRI HMD").FindAction("Rotation").
+
+        };
+
+        provider.QueueTeleportRequest()
     }
 
     private void OnTeleportActivate(InputAction.CallbackContext context)
     {
-
+        rayInteractor.enabled = true;
+        _isActive = true;
     }
 
     private void OnTeleportCancel(InputAction.CallbackContext context)
     {
-
+        rayInteractor.enabled = false;
+        _isActive = false;
     }
 }
