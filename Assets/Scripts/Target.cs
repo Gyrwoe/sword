@@ -29,7 +29,7 @@ public class Target : MonoBehaviour
     /**
      * Applies damage to the target when hit by a weapon.
      */
-    public void OnCollisionEnter(Collision other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Weapon"))
         {
