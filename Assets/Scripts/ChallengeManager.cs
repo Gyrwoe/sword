@@ -21,6 +21,16 @@ public class ChallengeManager : MonoBehaviour
     public bool gameRunning = false;
 
     /**
+     * Number of points gained before the number of targets increases.
+     */
+    public int difficultyIncreaseFrequency = 5;
+
+    /**
+     * Number of seconds added to the timer on destroying a dummy.
+     */
+    public int timeIncreaseOnDummyKill = 5;
+
+    /**
      * The number of targets placed on a new dummy.
      */
     public int defaultTargetCount = 2;
@@ -50,6 +60,7 @@ public class ChallengeManager : MonoBehaviour
         gameRunning = true;
         remainingTime = maxTime;
         spawner.running = true;
+        currentScore = 0;
     }
 
     public void EndGame()
@@ -63,6 +74,19 @@ public class ChallengeManager : MonoBehaviour
     public void DestroyDummy(Dummy dummy)
     {
         currentScore += scorePerDummy;
+        remainingTime += 5;
+        ManageDifficulty();
         spawner.RemoveDummy(dummy);
+    }
+
+    /**
+     * Makes the game more difficult as time goes on.
+     */
+    public void ManageDifficulty()
+    {
+        if (currentScore % difficultyIncreaseFrequency == 0)
+        {
+            defaultTargetCount += 1;
+        }
     }
 }
