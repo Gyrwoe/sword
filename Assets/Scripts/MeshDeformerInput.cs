@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class MeshDeformerInput : MonoBehaviour {
 	
@@ -36,7 +37,7 @@ public class MeshDeformerInput : MonoBehaviour {
 				if (collisionPoint.y < 2.5) {
 					audio.Play();
 				} else {
-					FindObjectOfType<AudioManager>().Play("truck");
+					FindObjectOfType<AudioManager>().Play("exclamation");
 				}
 				particle.Play();
 				touched = true;
