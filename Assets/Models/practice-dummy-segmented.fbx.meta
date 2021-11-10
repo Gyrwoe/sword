@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f7a3d11e989f8b3409c0993248ddf39e
+guid: 999af0eeb04ede24e8bbb4ff91ed7bba
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,8 +7,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: 1fabric
+    second: {fileID: 2100000, guid: 0eaed390c35935f4bae22db237e9fb7d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1fabric.001
+    second: {fileID: 2100000, guid: 696a7b46fc397554dbbe77029e5585b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: straw
-    second: {fileID: 2100000, guid: 5bc54729dbc427c4696f8f624725b32f, type: 2}
+    second: {fileID: 2100000, guid: b7228acef1d742c4cb666aa7b8f953da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: straw.001
+    second: {fileID: 2100000, guid: 8e689865fa2d1d046a9f77844e91cacb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: straw.002
+    second: {fileID: 2100000, guid: 38c24f45a9f5b184fb5a307b32309254, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -36,7 +56,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
