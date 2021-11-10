@@ -36,7 +36,7 @@ public class TeleportManager : MonoBehaviour
         if (_thumbstick.triggered)
             return;
 
-        if (!rayInteractor.GetCurrentRaycastHit(out RaycastHit hit))
+        if (!rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
             rayInteractor.enabled = false;
             _isActive = false;
@@ -46,11 +46,13 @@ public class TeleportManager : MonoBehaviour
         TeleportRequest request = new TeleportRequest()
         {
             destinationPosition = hit.point,
-           //TODO destinationRotation = actionAsset.FindActionMap("XRI HMD").FindAction("Rotation").
+            destinationRotation = actionAsset.FindActionMap("XRI HMD").FindAction("Rotation").ReadValue<Quaternion>()
 
         };
 
-        provider.QueueTeleportRequest()
+        provider.QueueTeleportRequest(request);
+        rayInteractor.enabled = false;
+        _isActive = false;
     }
 
     private void OnTeleportActivate(InputAction.CallbackContext context)
