@@ -9,8 +9,6 @@ public class HideRay : MonoBehaviour
     public ActionBasedController leftTPController;
     private XRInteractorLineVisual rightTeleportRay;
     private XRInteractorLineVisual leftTeleportRay;
-    public InputHelpers.Button teleportActivationButton;
-    public float activationThreshold = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
