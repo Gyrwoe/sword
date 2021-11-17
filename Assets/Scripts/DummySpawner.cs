@@ -11,11 +11,6 @@ using Random = UnityEngine.Random;
  */
 public class DummySpawner : MonoBehaviour
 {
-	// /**
-	//  * The list of positions for currently active dummies.
-	//  */
-	// public List<Transform> dummies = new List<Transform>();
-
 	/**
 	 * The list of currently active dummies.
 	 */
@@ -63,7 +58,17 @@ public class DummySpawner : MonoBehaviour
 	/**
 	 * The dummy prefab to spawn
 	 */
+	public GameObject dummyBase;
+	
+	/**
+	 * The dummy prefab to spawn
+	 */
 	public GameObject dummyPrefab;
+	
+	/**
+	 * The dummy prefabs to spawn
+	 */
+	public List<GameObject> dummyVariationPrefabs;
 
 	/**
 	 * The position on the Y axis to spawn the prefab at.
@@ -79,6 +84,11 @@ public class DummySpawner : MonoBehaviour
 	 * Whether the spawner is actively running or not.
 	 */
 	public bool running = false;
+
+	/**
+	 * Probability to spawn a variation of the default prefab
+	 */
+	public float variationChance = 0.3f;
 
 	// Start is called before the first frame update
 	void Start()
@@ -103,7 +113,7 @@ public class DummySpawner : MonoBehaviour
 		if (ShouldDummySpawn())
 		{
 			Vector3 position = GenerateDummyPosition(maxSpawnAttempts);
-			if (!position.Equals(Vector3.zero))
+			if (!position.Equals(Vector3.zero)) // Zero indicates that the spawn algorithm failed to find a position
 			{
 				SpawnDummy(position);
 			}
@@ -154,7 +164,7 @@ public class DummySpawner : MonoBehaviour
 		Vector3 proposedPosition = new Vector3(x, 0, z);
 		
 		// Retry if it is in the FOV of the player and generate new coordinates
-		// But the algorithm is struggling to find a viable position, accept this position
+		// But if the algorithm is struggling to find a viable position, accept this position
 		if (IsInCameraView(proposedPosition) && remainingTries > maxSpawnAttempts/4) return GenerateDummyPosition(--remainingTries);
 		
 		// Retry if it is too close to the player and generate new coordinates
@@ -191,8 +201,21 @@ public class DummySpawner : MonoBehaviour
 		// Turns the dummy towards the player (very spooky!!)
 		Vector3 toPlayer = playerTransform.position - position;
 		toPlayer.y = 0;
+
+		GameObject spawnedDummyBase = Instantiate(dummyBase, position, Quaternion.LookRotation(toPlayer));
+		Dummy dummy = spawnedDummyBase.GetComponent<Dummy>();
 		
-		Dummy dummy = Instantiate(dummyPrefab, position, Quaternion.LookRotation(toPlayer)).GetComponent<Dummy>();
+		GameObject chosenPrefab;
+
+		// Determine if the default dummy should be spawned or a random variation
+		if (Random.Range(0.0f, 1.0f) < variationChance)
+		{
+			int index = Random.Range(0, dummyVariationPrefabs.Count - 1);
+			chosenPrefab = dummyVariationPrefabs[index];
+		}
+		else chosenPrefab = dummyPrefab;
+		
+		Instantiate(chosenPrefab, position, Quaternion.LookRotation(toPlayer), spawnedDummyBase.transform);
 		
 		dummies.Add(dummy);
 	}
