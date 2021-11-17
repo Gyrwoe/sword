@@ -27,6 +27,8 @@ public class AudioManager : MonoBehaviour
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
 		}
+
+		Play("ambiance");
 	}
 
 	public void Play(string sound)
