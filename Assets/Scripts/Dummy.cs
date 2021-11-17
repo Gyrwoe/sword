@@ -20,6 +20,8 @@ public class Dummy : MonoBehaviour
     public List<Vector3> targetPositions;
     
     public GameObject targetPrefab;
+
+    public GameObject deathParticulesPrefab;
     
     // Start is called before the first frame update
     void Start()
@@ -48,6 +50,7 @@ public class Dummy : MonoBehaviour
         Destroy(target.gameObject);
         if (targets.Count <= 0)
         {
+            PlayDeathAnimation();
             manager.DestroyDummy(this);
         }
     }
@@ -78,5 +81,14 @@ public class Dummy : MonoBehaviour
         }
         Debug.Log("Shortage of available target positions.");
         return Vector3.zero;
+    }
+
+    public void PlayDeathAnimation()
+    {
+        Vector3 position = this.gameObject.transform.position;
+        GameObject deathParticules = Instantiate(deathParticulesPrefab, new Vector3(position.x, position.y + 2, position.z), this.gameObject.transform.rotation);
+        ParticleSystem particuleSystem = deathParticules.GetComponent<ParticleSystem>();
+        particuleSystem.Play();
+        // Destroy(deathParticules, particuleSystem.main.duration + particuleSystem.main.startLifetime.constantMax);
     }
 }
