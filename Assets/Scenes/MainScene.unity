@@ -3968,14 +3968,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929fe5b30c770b840bf2108cd34dc4cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 90000
+  maxTime: 60
   remainingTime: 0
   currentScore: 0
   scorePerDummy: 1
   spawner: {fileID: 767013852}
   gameRunning: 0
   difficultyIncreaseFrequency: 5
-  timeIncreaseOnDummyKill: 5
+  timeIncreaseOnDummyKill: 2
   defaultTargetCount: 1
 --- !u!114 &767013854
 MonoBehaviour:
