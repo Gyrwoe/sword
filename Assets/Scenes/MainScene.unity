@@ -8973,7 +8973,6 @@ MonoBehaviour:
   playableAreaCenterObject: {fileID: 767013846}
   playableAreaCenter: {fileID: 0}
   player: {fileID: 767013846}
-  playerTransform: {fileID: 0}
   dummyBase: {fileID: 95734321823567180, guid: 363129bb009674d468c42d2fa7c3b226, type: 3}
   dummyPrefab: {fileID: 95734321823567180, guid: 95db24171ef77cc488a9c5792fc93f66, type: 3}
   dummyVariationPrefabs:
@@ -8981,6 +8980,8 @@ MonoBehaviour:
   - {fileID: 932230133418010218, guid: 0337d01305317554a9a9a30b728da79e, type: 3}
   - {fileID: 1458062185255566406, guid: 990355727febea44b84761df99c30323, type: 3}
   - {fileID: 7452633033545187602, guid: 2ac67ea9cbf88fe428e0674b257c81e3, type: 3}
+  dummyChefPrefab: {fileID: 1633527471612438026, guid: a04bb45aa58b7f94a9a39d403278379a, type: 3}
+  dummyChefParticles: {fileID: 975860511030106670, guid: f5fa7c35f6ddd604eac54c2a0bc958b0, type: 3}
   defaultDummyY: 0.4
   maxSpawnAttempts: 200
   running: 0
@@ -8998,14 +8999,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929fe5b30c770b840bf2108cd34dc4cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 90000
+  maxTime: 60
   remainingTime: 0
   currentScore: 0
   scorePerDummy: 1
   spawner: {fileID: 767013852}
   gameRunning: 0
   difficultyIncreaseFrequency: 5
-  timeIncreaseOnDummyKill: 5
+  timeIncreaseOnDummyKill: 2
   defaultTargetCount: 1
 --- !u!114 &767013854
 MonoBehaviour:
