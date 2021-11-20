@@ -90,15 +90,11 @@ public class DummySpawner : MonoBehaviour
 	 */
 	public float variationChance = 0.3f;
 
-    public float scalingFactor;
-
 	// Start is called before the first frame update
 	void Start()
 	{
 		playerTransform = player.GetComponent<Transform>();
-        playableAreaCenter = playableAreaCenterObject.GetComponent<Transform>();
-
-    }
+	}
 
 	// Update is called once per frame
 	void Update()
@@ -207,7 +203,7 @@ public class DummySpawner : MonoBehaviour
 		toPlayer.y = 0;
 
 		GameObject spawnedDummyBase = Instantiate(dummyBase, position, Quaternion.LookRotation(toPlayer));
-        Dummy dummy = spawnedDummyBase.GetComponent<Dummy>();
+		Dummy dummy = spawnedDummyBase.GetComponent<Dummy>();
 		
 		GameObject chosenPrefab;
 
@@ -219,19 +215,15 @@ public class DummySpawner : MonoBehaviour
 		}
 		else chosenPrefab = dummyPrefab;
 		
-		GameObject model = Instantiate(chosenPrefab, position, Quaternion.LookRotation(toPlayer), spawnedDummyBase.transform);
-        // model.transform.localScale = new Vector3(scalingFactor, scalingFactor, scalingFactor);
+		Instantiate(chosenPrefab, position, Quaternion.LookRotation(toPlayer), spawnedDummyBase.transform);
 		
 		dummies.Add(dummy);
+	}
 
-        dummy.AddTargets();
-        spawnedDummyBase.transform.localScale = new Vector3(scalingFactor, scalingFactor, scalingFactor);
-    }
-
-    /**
+	/**
 	 * Deletes the given dummy
 	 */
-    public void RemoveDummy(Dummy dummy)
+	public void RemoveDummy(Dummy dummy)
 	{
 		Destroy(dummy.gameObject);
 		dummies.Remove(dummy);

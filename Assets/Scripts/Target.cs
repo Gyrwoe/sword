@@ -33,7 +33,6 @@ public class Target : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Weapon"))
         {
-            Debug.Log("TOUCH");
             Weapon weapon = other.gameObject.GetComponent<Weapon>();
             health -= weapon.damage;
             if (health <= 0)
