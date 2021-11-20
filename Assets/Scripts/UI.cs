@@ -49,7 +49,7 @@ public class UI : MonoBehaviour
     public void UpdateUI()
     {
         score.text = "Score: " + manager.currentScore;
-        time.text = "Remaining time: " + (int)manager.remainingTime;
+        time.text = "Time: " + (int)manager.remainingTime;
     }
 
     IEnumerator DisplayGameEnded()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7004688871324305459}
   - component: {fileID: 7004688871324305457}
   - component: {fileID: 7004688871324305458}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-5-low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7666097469414463604}
   - component: {fileID: 646702714982551251}
   - component: {fileID: 1271763853885223008}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: left_arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5059,7 +5059,7 @@ GameObject:
   - component: {fileID: 7004688871604402593}
   - component: {fileID: 7004688871604402607}
   - component: {fileID: 7004688871604402592}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-alpha-low.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5140,7 +5140,7 @@ GameObject:
   - component: {fileID: 7004688871675925940}
   - component: {fileID: 7004688871675925938}
   - component: {fileID: 7004688871675925939}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-9-low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5219,7 +5219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7004688871891188465}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Dummy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5268,7 +5268,7 @@ GameObject:
   - component: {fileID: 7004688871996866774}
   - component: {fileID: 7004688871996866772}
   - component: {fileID: 7004688871996866773}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-5-low (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5349,7 +5349,7 @@ GameObject:
   - component: {fileID: 7004688872106928873}
   - component: {fileID: 7004688872106928887}
   - component: {fileID: 7004688872106928872}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-5-low (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5430,7 +5430,7 @@ GameObject:
   - component: {fileID: 7004688872186242713}
   - component: {fileID: 7004688872186242727}
   - component: {fileID: 7004688872186242712}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-5-low (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5515,7 +5515,7 @@ GameObject:
   - component: {fileID: 754731723832280061}
   - component: {fileID: 7326510614949386879}
   - component: {fileID: 5359668001130028440}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: right_arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10478,7 +10478,7 @@ GameObject:
   - component: {fileID: 7004688872563536404}
   - component: {fileID: 7004688872563536402}
   - component: {fileID: 7004688872563536403}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-5-low (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10559,7 +10559,7 @@ GameObject:
   - component: {fileID: 7004688872709042527}
   - component: {fileID: 7004688872709042525}
   - component: {fileID: 7004688872709042526}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-5-low (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10640,7 +10640,7 @@ GameObject:
   - component: {fileID: 7004688872752931460}
   - component: {fileID: 7004688872752931458}
   - component: {fileID: 7004688872752931459}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-8-low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10721,7 +10721,7 @@ GameObject:
   - component: {fileID: 7004688872834431610}
   - component: {fileID: 7004688872834431608}
   - component: {fileID: 7004688872834431609}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-7-low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10802,7 +10802,7 @@ GameObject:
   - component: {fileID: 7004688872874657751}
   - component: {fileID: 7004688872874657749}
   - component: {fileID: 7004688872874657750}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-5-low (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10883,7 +10883,7 @@ GameObject:
   - component: {fileID: 7004688873243603665}
   - component: {fileID: 7004688873243603679}
   - component: {fileID: 7004688873243603664}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-alpha-low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10970,7 +10970,7 @@ GameObject:
   - component: {fileID: 2601023981838699245}
   - component: {fileID: 5953497796997718098}
   - component: {fileID: 1634634022124657553}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-6-low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15961,7 +15961,7 @@ GameObject:
   - component: {fileID: 7004688873289507914}
   - component: {fileID: 7004688873289507912}
   - component: {fileID: 7004688873289507913}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-alpha-low.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16048,7 +16048,7 @@ GameObject:
   - component: {fileID: 8754286326015914823}
   - component: {fileID: 2454452508340782253}
   - component: {fileID: 1653660729477799146}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: practice-dummy-6-low.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

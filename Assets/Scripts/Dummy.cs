@@ -50,24 +50,26 @@ public class Dummy : MonoBehaviour
         }
     }
 
-    public void AddTargets()
+    public void AddTargets(Material mat)
     {
         if(manager == null) manager = Camera.main.GetComponent<ChallengeManager>();
         for (int i = 0; i < manager.defaultTargetCount; i++)
         {
-            AddTarget();
+            AddTarget(mat);
         }
     }
 
     /**
      * Adds a new target to the dummy.
      */
-    public void AddTarget()
+    public void AddTarget(Material mat)
     {
         Vector3 position = GetTargetPosition();
         if(position != Vector3.zero)
         {
             Target target = Instantiate(targetPrefab, Vector3.zero, this.gameObject.transform.rotation, transform).GetComponent<Target>();
+            target.gameObject.layer = 0;
+            target.GetComponent<Renderer>().material = mat;
             target.gameObject.transform.localPosition = position;
             target.dummy = this;
             targets.Add(target);

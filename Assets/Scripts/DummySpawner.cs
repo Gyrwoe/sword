@@ -81,6 +81,11 @@ public class DummySpawner : MonoBehaviour
 	public GameObject dummyChefParticles;
 
 	/**
+	 * Material for targets
+	 */
+	public Material targetMaterial;
+
+	/**
 	 * The position on the Y axis to spawn the prefab at.
 	 */
 	public float defaultDummyY = -0.9f;
@@ -220,6 +225,7 @@ public class DummySpawner : MonoBehaviour
 		toPlayer.y = 0;
 
 		GameObject spawnedDummyBase = Instantiate(dummyBase, position, Quaternion.LookRotation(toPlayer));
+		spawnedDummyBase.layer = 0;
         Dummy dummy = spawnedDummyBase.GetComponent<Dummy>();
         
         // Choosing the model
@@ -240,10 +246,11 @@ public class DummySpawner : MonoBehaviour
 		else chosenPrefab = dummyPrefab;
 		
 		GameObject model = Instantiate(chosenPrefab, position, Quaternion.LookRotation(toPlayer), spawnedDummyBase.transform);
+		model.layer = 0;
 		
 		dummies.Add(dummy);
 
-        dummy.AddTargets();
+        dummy.AddTargets(targetMaterial);
         spawnedDummyBase.transform.localScale = new Vector3(scalingFactor, scalingFactor, scalingFactor);
     }
 
