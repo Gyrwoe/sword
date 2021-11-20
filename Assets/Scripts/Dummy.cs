@@ -26,13 +26,8 @@ public class Dummy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        manager = Camera.main.GetComponent<ChallengeManager>();
+        if (manager == null) manager = Camera.main.GetComponent<ChallengeManager>();
         health = maxHealth;
-
-        for (int i = 0; i < manager.defaultTargetCount; i++)
-        {
-            AddTarget();
-        }
     }
 
     // Update is called once per frame
@@ -55,15 +50,28 @@ public class Dummy : MonoBehaviour
         }
     }
 
+    public void AddTargets()
+    {
+        if(manager == null) manager = Camera.main.GetComponent<ChallengeManager>();
+        for (int i = 0; i < manager.defaultTargetCount; i++)
+        {
+            AddTarget();
+        }
+    }
+
     /**
      * Adds a new target to the dummy.
      */
     public void AddTarget()
     {
-        Target target = Instantiate(targetPrefab, Vector3.zero, this.gameObject.transform.rotation, transform).GetComponent<Target>();
-        target.gameObject.transform.localPosition = GetTargetPosition();
-        target.dummy = this;
-        targets.Add(target);
+        Vector3 position = GetTargetPosition();
+        if(position != Vector3.zero)
+        {
+            Target target = Instantiate(targetPrefab, Vector3.zero, this.gameObject.transform.rotation, transform).GetComponent<Target>();
+            target.gameObject.transform.localPosition = position;
+            target.dummy = this;
+            targets.Add(target);
+        }
     }
 
     /**
