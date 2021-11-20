@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7860020569927645885
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -8,12 +21,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Bird W
-  m_Shader: {fileID: 4800000, guid: 0b1fdadd03e8511409522e5965ff678a, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: 99134b1f0c27d54469a840832a28fadf, type: 3}
+  m_ShaderKeywords: _WINDQUALITY_NONE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2906
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -51,6 +64,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ExtraTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 455660fcdc0c9e24ab37aa233275085a, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -75,8 +92,14 @@ Material:
         m_Texture: {fileID: 2800000, guid: 55ce03abd2543af4e8d3de832af67e67, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SubsurfaceTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BiasNormal: 1
+    - _BillboardKwToggle: 0
+    - _BillboardShadowFade: 0.5
     - _Brightness: 1
     - _BumpMapDUV: 1
     - _BumpScale: 1
@@ -100,6 +123,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _HueVariationKwToggle: 0
     - _IndentCenterX: 0.3
     - _IndentCenterXZ: 20
     - _IntensityNm: 3
@@ -108,6 +132,7 @@ Material:
     - _IntensityRef: 0.5
     - _Metallic: 0
     - _Mode: 0
+    - _NormalMapKwToggle: 0
     - _OcclusionMapUv: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -121,6 +146,8 @@ Material:
     - _SpecMapUVD: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _SubsurfaceIndirect: 0.25
+    - _SubsurfaceKwToggle: 0
     - _TreeFlexXZ: 1
     - _TreeFlexY: 1
     - _TreeJitter: 1
@@ -129,12 +156,17 @@ Material:
     - _TreeWindMaxYPosition: 100
     - _TreeWindPower: 1
     - _TreeWindYPosition: 30
+    - _TwoSided: 2
     - _UVSec: 0
     - _WaveY: 2
     - _WaveYSpeed: 0.15
+    - _WindQuality: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.40506667, g: 0.41066664, b: 0.47599998, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HueVariationColor: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _ReflectColor: {r: 0.937, g: 0.9459477, b: 1, a: 1}
     - _SpecColor: {r: 0.084, g: 0.084, b: 0.084, a: 1}
+    - _SubsurfaceColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
