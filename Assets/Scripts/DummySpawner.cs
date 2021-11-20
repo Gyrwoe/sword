@@ -53,22 +53,32 @@ public class DummySpawner : MonoBehaviour
 
 	public GameObject player;
 
-	public Transform playerTransform;
+	private Transform _playerTransform;
 
 	/**
-	 * The dummy prefab to spawn
+	 * The prefab containing the scripts and physics components of the dummy.
 	 */
 	public GameObject dummyBase;
 	
 	/**
-	 * The dummy prefab to spawn
+	 * The dummy prefab to spawn, containing the dummy model.
 	 */
 	public GameObject dummyPrefab;
 	
 	/**
-	 * The dummy prefabs to spawn
+	 * The visual variants of the dummy prefab.
 	 */
 	public List<GameObject> dummyVariationPrefabs;
+
+	/**
+	 * Why is this even a thing?
+	 */
+	public GameObject dummyChefPrefab;
+
+	/**
+	 * Just a lot of croissants.
+	 */
+	public GameObject dummyChefParticles;
 
 	/**
 	 * The position on the Y axis to spawn the prefab at.
@@ -90,12 +100,15 @@ public class DummySpawner : MonoBehaviour
 	 */
 	public float variationChance = 0.3f;
 
+	/**
+	 * Dummies spawned will be scaled by this factor.
+	 */
     public float scalingFactor;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		playerTransform = player.GetComponent<Transform>();
+		_playerTransform = player.GetComponent<Transform>();
         playableAreaCenter = playableAreaCenterObject.GetComponent<Transform>();
 
     }
@@ -154,7 +167,7 @@ public class DummySpawner : MonoBehaviour
 		}
 		
 		Vector3 playableAreaCenterPosition = playableAreaCenter.position;
-		Vector3 playerPosition = playerTransform.position;
+		Vector3 playerPosition = _playerTransform.position;
 		playerPosition.y = 0; // We only work in the xz plane for simplicity
 		
 		// Generate coordinates inside the playable area
@@ -203,24 +216,30 @@ public class DummySpawner : MonoBehaviour
 		position.y = defaultDummyY;
 		
 		// Turns the dummy towards the player (very spooky!!)
-		Vector3 toPlayer = playerTransform.position - position;
+		Vector3 toPlayer = _playerTransform.position - position;
 		toPlayer.y = 0;
 
 		GameObject spawnedDummyBase = Instantiate(dummyBase, position, Quaternion.LookRotation(toPlayer));
         Dummy dummy = spawnedDummyBase.GetComponent<Dummy>();
+        
+        // Choosing the model
 		
 		GameObject chosenPrefab;
-
+		
 		// Determine if the default dummy should be spawned or a random variation
 		if (Random.Range(0.0f, 1.0f) < variationChance)
 		{
-			int index = Random.Range(0, dummyVariationPrefabs.Count - 1);
-			chosenPrefab = dummyVariationPrefabs[index];
+			int index = Random.Range(0, dummyVariationPrefabs.Count + 1);
+			if (index == dummyVariationPrefabs.Count)
+			{
+				chosenPrefab = dummyChefPrefab;
+				dummy.deathParticulesPrefab = dummyChefParticles;
+			}
+			else chosenPrefab = dummyVariationPrefabs[index];
 		}
 		else chosenPrefab = dummyPrefab;
 		
 		GameObject model = Instantiate(chosenPrefab, position, Quaternion.LookRotation(toPlayer), spawnedDummyBase.transform);
-        // model.transform.localScale = new Vector3(scalingFactor, scalingFactor, scalingFactor);
 		
 		dummies.Add(dummy);
 
