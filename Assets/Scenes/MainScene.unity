@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2770601, g: 0.39878255, b: 0.5470486, a: 1}
+  m_IndirectSpecularColor: {r: 0.56763476, g: 0.6696194, b: 0.7719165, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8030,6 +8030,46 @@ PrefabInstance:
     - target: {fileID: 899485406013720556, guid: c0d033acb1399bd4e86e86b0a028a722, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190555317463991181, guid: c0d033acb1399bd4e86e86b0a028a722, type: 3}
+      propertyPath: sounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190555317463991181, guid: c0d033acb1399bd4e86e86b0a028a722, type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a70f934e574c9f44c8b8e660bf35fcba, type: 3}
+    - target: {fileID: 2190555317463991181, guid: c0d033acb1399bd4e86e86b0a028a722, type: 3}
+      propertyPath: sounds.Array.data[0].name
+      value: explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190555317463991181, guid: c0d033acb1399bd4e86e86b0a028a722, type: 3}
+      propertyPath: sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a7e12e6a3910ddf4f8aee81015e3c7dd, type: 3}
+    - target: {fileID: 2190555317463991181, guid: c0d033acb1399bd4e86e86b0a028a722, type: 3}
+      propertyPath: sounds.Array.data[1].name
+      value: truck
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190555317463991181, guid: c0d033acb1399bd4e86e86b0a028a722, type: 3}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c82f8975337ec154083ff02e0c0999f2, type: 3}
+    - target: {fileID: 2190555317463991181, guid: c0d033acb1399bd4e86e86b0a028a722, type: 3}
+      propertyPath: sounds.Array.data[2].name
+      value: exclamation
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190555317463991181, guid: c0d033acb1399bd4e86e86b0a028a722, type: 3}
+      propertyPath: sounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: bd46dbfa6a39ccd44b607d53c6bd68d5, type: 3}
+    - target: {fileID: 2190555317463991181, guid: c0d033acb1399bd4e86e86b0a028a722, type: 3}
+      propertyPath: sounds.Array.data[3].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190555317463991181, guid: c0d033acb1399bd4e86e86b0a028a722, type: 3}
+      propertyPath: sounds.Array.data[3].name
+      value: ambiance
       objectReference: {fileID: 0}
     - target: {fileID: 8330796045866058937, guid: c0d033acb1399bd4e86e86b0a028a722, type: 3}
       propertyPath: m_Name
